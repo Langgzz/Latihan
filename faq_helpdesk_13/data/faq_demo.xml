@@ -1,0 +1,8 @@
+<odoo>
+  <record id="faq_demo_1" model="faq">
+    <field name="name">Bagaimana cara reset password?</field>
+    <field name="answer">Klik 'Lupa Password' di halaman login dan ikuti instruksi yang dikirim ke email Anda.</field>
+    <field name="category">Akun</field>
+    <field name="is_published">True</field>
+  </record>
+</odoo>

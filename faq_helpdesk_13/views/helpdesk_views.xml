@@ -1,0 +1,15 @@
+<odoo>
+  <record id="view_helpdesk_form_inherit" model="ir.ui.view">
+    <field name="name">dym.helpdesk.ticket.form.inherit.faq</field>
+    <field name="model">dym.helpdesk.ticket</field>
+    <field name="inherit_id" search="[('model','=','dym.helpdesk.ticket'),('type','=','form')]"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/group" position="after">
+        <group string="Related FAQs">
+          <field name="faq_ids"/>
+          <button name="action_convert_to_faq" type="object" string="Convert to FAQ" class="btn-primary"/>
+        </group>
+      </xpath>
+    </field>
+  </record>
+</odoo>

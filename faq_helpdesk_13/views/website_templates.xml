@@ -1,0 +1,33 @@
+<odoo>
+  <template id="faq_page" name="FAQ Page">
+    <t t-call="website.layout">
+      <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <t t-foreach="request.env['faq'].sudo().search([('is_published','=',True)])" t-as="faq">
+          <div class="card my-3">
+            <div class="card-header">
+              <strong><t t-esc="faq.name"/></strong>
+            </div>
+            <div class="card-body">
+              <p><t t-esc="faq.answer"/></p>
+              <small>Category: <t t-esc="faq.category"/></small><br/>
+              <small>Rating: <t t-esc="faq.rating"/> (from <t t-esc="faq.rating_count"/> votes)</small>
+              <form t-action="/faq/rate" method="post">
+                <input type="hidden" name="faq_id" t-att-value="faq.id"/>
+                <label>Rate this solution:</label>
+                <select name="value">
+                  <option value="1">★☆☆☆☆</option>
+                  <option value="2">★★☆☆☆</option>
+                  <option value="3">★★★☆☆</option>
+                  <option value="4">★★★★☆</option>
+                  <option value="5">★★★★★</option>
+                </select>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </t>
+      </div>
+    </t>
+  </template>
+</odoo>

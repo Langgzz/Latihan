@@ -1,0 +1,47 @@
+<odoo>
+  <record id="view_faq_form" model="ir.ui.view">
+    <field name="name">faq.form</field>
+    <field name="model">faq</field>
+    <field name="arch" type="xml">
+      <form string="FAQ">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="answer"/>
+            <field name="category"/>
+            <field name="sub_category"/>
+            <field name="is_published"/>
+            <field name="count"/>
+            <field name="helpdesk_ticket_ids"/>
+            <field name="rating" readonly="1"/>
+            <field name="rating_count" readonly="1"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_faq_tree" model="ir.ui.view">
+    <field name="name">faq.tree</field>
+    <field name="model">faq</field>
+    <field name="arch" type="xml">
+      <tree string="FAQs">
+        <field name="name"/>
+        <field name="category"/>
+        <field name="sub_category"/>
+        <field name="is_published"/>
+        <field name="rating"/>
+        <field name="rating_count"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_faq" model="ir.actions.act_window">
+    <field name="name">FAQs</field>
+    <field name="res_model">faq</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="faq_menu_root" name="FAQ Helpdesk" sequence="10"/>
+  <menuitem id="faq_menu" name="FAQs" parent="faq_menu_root" action="action_faq"/>
+</odoo>

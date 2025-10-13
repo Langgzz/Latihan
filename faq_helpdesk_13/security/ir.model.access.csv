@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_faq_user,access.faq.user,model_faq,,1,1,1,1
+access_faq_rating_user,access.faq.rating.user,model_faq_rating,,1,1,1,1
