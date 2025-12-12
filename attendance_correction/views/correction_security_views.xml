@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_attendance_correction_form_security" model="ir.ui.view">
+        <field name="name">hr.attendance.correction.form.security</field>
+        <field name="model">hr.attendance.correction</field>
+        <field name="inherit_id" ref="attendance_correction.view_hr_attendance_correction_form"/>
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//button[@name='action_approve']" position="attributes">
+                <attribute name="groups">hr_attendance.group_hr_attendance_user</attribute>
+            </xpath>
+            
+            <xpath expr="//button[@name='action_reject']" position="attributes">
+                <attribute name="groups">hr_attendance.group_hr_attendance_user</attribute>
+            </xpath>
+            
+            <xpath expr="//button[@name='action_reset']" position="attributes">
+                <attribute name="groups">base.group_user</attribute>
+            </xpath>
+            
+        </field>
+    </record>
+</odoo>
