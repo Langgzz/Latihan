@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="faq_page" name="FAQ Page">
+        <t t-call="website.layout">
+            <div class="container faq-container py-5">
+                <h1 class="text-center mb-4">FAQ Odoo 13</h1>
+                <p class="text-center text-muted">Temukan jawaban untuk pertanyaan umum tentang Odoo 13</p>
+
+                <!-- Search Bar -->
+                <div class="row justify-content-center mb-4">
+                    <div class="col-12 col-md-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="faq-search" 
+                                placeholder="Cari pertanyaan atau topik..."
+                                autocomplete="off"/>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Buttons -->
+                <div class="row justify-content-center mb-4">
+                    <div class="col-12 text-center">
+                        <button class="btn btn-primary m-1 category-btn" data-category="all">
+                            Semua
+                        </button>
+                        <t t-foreach="categories" t-as="category">
+                            <button class="btn btn-outline-primary m-1 category-btn" 
+                                t-att-data-category="category.id">
+                                <i t-att-class="category.icon"/> <t t-esc="category.name"/>
+                            </button>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- FAQ Items -->
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8">
+                        <div class="accordion" id="faqAccordion">
+                            <t t-foreach="faqs" t-as="faq">
+                                <div class="card mb-2 faq-item" t-att-data-category="faq.category_id.id">
+                                    <div class="card-header" t-att-id="'faqHeading%s' % faq.id">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left faq-question" 
+                                                type="button" 
+                                                data-toggle="collapse" 
+                                                t-att-data-target="'#faqCollapse%s' % faq.id"
+                                                aria-expanded="false">
+                                                <t t-esc="faq.name"/>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div t-att-id="'faqCollapse%s' % faq.id" 
+                                        class="collapse faq-answer"
+                                        t-att-aria-labelledby="'faqHeading%s' % faq.id"
+                                        data-parent="#faqAccordion">
+                                        <div class="card-body" t-raw="faq.answer"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inline JavaScript for immediate functionality -->
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    // Search functionality
+                    $('#faq-search').on('input', function() {
+                        var searchValue = $(this).val().toLowerCase();
+                        
+                        $('.faq-item').each(function() {
+                            var $faq = $(this);
+                            var question = $faq.find('.faq-question').text().toLowerCase();
+                            var answer = $faq.find('.card-body').text().toLowerCase();
+                            
+                            if (question.indexOf(searchValue) > -1 || answer.indexOf(searchValue) > -1) {
+                                $faq.show();
+                            } else {
+                                $faq.hide();
+                            }
+                        });
+                    });
+
+                    // Category filter functionality
+                    $('.category-btn').click(function(e) {
+                        e.preventDefault();
+                        var selectedCategory = $(this).data('category');
+                        
+                        // Update active button
+                        $('.category-btn').removeClass('active');
+                        $(this).addClass('active');
+                        
+                        // Filter FAQ items
+                        if (selectedCategory === 'all') {
+                            $('.faq-item').show();
+                        } else {
+                            $('.faq-item').each(function() {
+                                var $faq = $(this);
+                                if ($faq.data('category') == selectedCategory) {
+                                    $faq.show();
+                                } else {
+                                    $faq.hide();
+                                }
+                            });
+                        }
+                    });
+
+                    // Set 'Semua' as active by default
+                    $('.category-btn[data-category="all"]').addClass('active');
+                });
+            </script>
+        </t>
+    </template>
+</odoo>
