@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_correction_employee,correction.employee,model_hr_attendance_correction,attendance_correction.group_attendance_correction_employee,1,0,1,0
-access_correction_manager,correction.manager,model_hr_attendance_correction,hr_attendance.group_hr_attendance_user,1,1,1,0
-access_correction_hr,correction.hr,model_hr_attendance_correction,hr_attendance.group_hr_attendance_manager,1,1,1,1
-access_correction_log_user,correction.log.user,model_attendance_correction_log,base.group_user,1,0,0,0
-access_correction_log_manager,correction.log.manager,model_attendance_correction_log,hr_attendance.group_hr_attendance_manager,1,1,1,1
-access_correction_atasan_approver,correction.atasan_approver,model_hr_attendance_correction,attendance_correction.group_atasan_approver,1,1,1,1
