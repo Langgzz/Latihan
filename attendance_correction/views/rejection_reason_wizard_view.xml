@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="attendance_correction_reject_wizard_form" model="ir.ui.view">
+            <field name="name">attendance.correction.reject.wizard.form</field>
+            <field name="model">attendance.correction.reject.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Alasan Penolakan">
+                    <group>
+                        <field name="correction_id" invisible="1"/>
+                        <field name="reason" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_reject_with_reason" string="Tolak Permintaan" type="object" class="oe_highlight"/>
+                        <button string="Batal" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_attendance_correction_reject_wizard" model="ir.actions.act_window">
+            <field name="name">Tolak Permintaan Koreksi</field>
+            <field name="res_model">attendance.correction.reject.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
