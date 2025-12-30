@@ -1,0 +1,114 @@
+/* Interactive FAQ — improved styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary: #2b6ea3; /* main blue */
+    --accent: #f39c12;  /* accent color */
+    --muted: #9aa5ae;
+    --bg: #f7f9fb;
+    --card: #ffffff;
+    --radius: 6px;
+    --max-width: 980px;
+}
+
+/* Scoped styles to avoid interfering with Odoo's global layout */
+.faq-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color: #304050;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Search box */
+.faq-search-input-group {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.faq-search-input-group .form-control {
+    border: 1px solid #dee2e6;
+    border-right: none;
+    padding: 12px 16px;
+    height: auto;
+}
+
+.faq-search-input-group .input-group-text {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-left: none;
+    color: var(--muted);
+}
+
+/* Category buttons */
+.category-btn {
+    border-radius: 20px !important;
+    padding: 6px 16px !important;
+    font-size: 14px !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid var(--primary) !important;
+    color: var(--primary) !important;
+    background: transparent !important;
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: var(--primary) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 10px rgba(43, 110, 163, 0.2);
+}
+
+/* FAQ Accordion */
+#faqAccordion .card {
+    border: 1px solid #edf2f7;
+    border-radius: var(--radius) !important;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+#faqAccordion .card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#faqAccordion .card-header {
+    background-color: #fff;
+    border-bottom: none;
+    padding: 0;
+}
+
+#faqAccordion .faq-question {
+    font-weight: 600;
+    color: #2d3748;
+    text-decoration: none;
+    padding: 16px 20px;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+#faqAccordion .faq-question:hover, 
+#faqAccordion .faq-question:not(.collapsed) {
+    color: var(--primary);
+}
+
+#faqAccordion .faq-answer {
+    border-top: 1px solid #f7fafc;
+}
+
+#faqAccordion .card-body {
+    padding: 20px;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* No results message */
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    color: var(--muted);
+}
+
+.no-results.active {
+    display: block;
+}
