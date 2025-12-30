@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_faq_faq_public,faq.faq.public,model_faq_faq,,1,0,0,0
-access_faq_category_public,faq.category.public,model_faq_category,,1,0,0,0
-access_faq_faq_admin,faq.faq.admin,model_faq_faq,base.group_system,1,1,1,1
-access_faq_category_admin,faq.category.admin,model_faq_category,base.group_system,1,1,1,1
